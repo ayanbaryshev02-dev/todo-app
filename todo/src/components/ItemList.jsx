@@ -1,4 +1,4 @@
-const ItemList = ({tasks}) =>{
+const ItemList = ({tasks, isDoneClick}) =>{
     return(
 
         <div className='itemList mt-8 ml-4'>
@@ -7,7 +7,7 @@ const ItemList = ({tasks}) =>{
         <li id={task.id} className="flex items-center mb-2">
         <button className='text-gray-400 font-bold'>⋮</button>
        <div className='ml-3 '>
-        <input className='' type="checkbox" checked={task.isChecked}/>
+        <input onChange={isDoneClick} className='' type="checkbox" checked={task.isChecked}/>
         <span className='ml-3 font-medium'>{task.title}</span>
           </div>
         </li>

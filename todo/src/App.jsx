@@ -22,14 +22,23 @@ function App() {
   },
 ]
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+ const openModalForm = () =>{
+  setIsModalOpen(!isModalOpen)
+ }
 
   return (
     <>
     <div className='min-h-screen flex flex-col mt-10 ml-5 mr-12'>
     <Header />
-    <Pager />
+    <Pager  
+    openModalForm={openModalForm}
+    isModalOpen={isModalOpen}
+    setIsModalOpen={setIsModalOpen}/>
     <SectionName />
-    <ItemList tasks={tasks}/>
+    <ItemList tasks={tasks}
+    />
     <Footer />
       </div>
     </>
