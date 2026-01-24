@@ -9,7 +9,7 @@ import ItemList from './components/ItemList'
 
 function App() {
 
-  const tasks = [
+  const [tasks, setTasks] = useState([
   {
     id: 'task-1',
     title: 'Go to run',
@@ -20,7 +20,9 @@ function App() {
     title: 'Go to gym',
     isDone: true,
   },
-]
+])
+
+
 
  const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -29,7 +31,14 @@ function App() {
  }
 
  const toggleTaskComplete = (taskId, isDone) =>{
-  console.log();
+  setTasks(
+    tasks.map((task)=>{
+      if(task.id === taskId){
+        return {...task, isDone}
+      }
+      return task
+    })
+  )
   
  }
 
@@ -43,6 +52,7 @@ function App() {
     setIsModalOpen={setIsModalOpen}/>
     <SectionName />
     <ItemList tasks={tasks}
+    toggleTaskComplete={toggleTaskComplete}
     />
     <Footer />
       </div>
