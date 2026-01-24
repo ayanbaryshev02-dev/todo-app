@@ -9,6 +9,19 @@ import ItemList from './components/ItemList'
 
 function App() {
 
+  const tasks = [
+  {
+    id: 'task-1',
+    title: 'Go to run',
+    isChecked: false,
+  },
+  {
+    id: 'task-2',
+    title: 'Go to gym',
+    isChecked: true,
+  },
+]
+
 
   return (
     <>
@@ -16,7 +29,7 @@ function App() {
     <Header />
     <Pager />
     <SectionName />
-    <ItemList />
+    <ItemList tasks={tasks}/>
     <Footer />
       </div>
     </>
