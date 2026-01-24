@@ -1,6 +1,6 @@
 import AddTaskButton from "./AddTaskButton"
 
-const Pager = ({isModalOpen, setIsModalOpen}) =>{
+const Pager = ({isModalOpen, setIsModalOpen, addNewTask, newTaskTitle, setNewTaskTitle}) =>{
     return(
         <div className='flex justify-between mt-15 '>
         <div className=''>
@@ -9,7 +9,10 @@ const Pager = ({isModalOpen, setIsModalOpen}) =>{
         <button className='ml-8 bg-gray-200  rounded-full p-2 px-6 font-medium'>Trash</button>
         </div>
         <AddTaskButton isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}/>
+        setIsModalOpen={setIsModalOpen}
+        addNewTask={addNewTask}
+        newTaskTitle={newTaskTitle}
+        setNewTaskTitle={setNewTaskTitle}/>
      </div>
     )
 }

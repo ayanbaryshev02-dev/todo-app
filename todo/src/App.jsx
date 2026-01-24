@@ -22,13 +22,25 @@ function App() {
   },
 ])
 
-
-
- const [isModalOpen, setIsModalOpen] = useState(false)
+const [newTaskTitle, setNewTaskTitle] = useState('')
+const [isModalOpen, setIsModalOpen] = useState(false)
 
  const openModalForm = () =>{
   setIsModalOpen(!isModalOpen)
  }
+
+ const addNewTask = (taskId, title, isDone) =>{
+  event.preventDefault()
+  if(newTaskTitle.trim().length > 0){
+    const newTask = {
+      id: crypto?.randomUUID() ?? Date.now().toString(), 
+      title: newTaskTitle,
+      isDone: false,
+    }
+    setTasks([...tasks, newTask])
+    setNewTaskTitle('')
+  }
+}
 
  const toggleTaskComplete = (taskId, isDone) =>{
   setTasks(
@@ -49,7 +61,10 @@ function App() {
     <Pager  
     openModalForm={openModalForm}
     isModalOpen={isModalOpen}
-    setIsModalOpen={setIsModalOpen}/>
+    setIsModalOpen={setIsModalOpen}
+    addNewTask={addNewTask}
+    newTaskTitle={newTaskTitle}
+    setNewTaskTitle={setNewTaskTitle}/>
     <SectionName />
     <ItemList tasks={tasks}
     toggleTaskComplete={toggleTaskComplete}
