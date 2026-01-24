@@ -1,6 +1,6 @@
 import AddTaskButton from "./AddTaskButton"
 
-const Pager = ({isModalOpen, openModalForm, setIsModalOpen}) =>{
+const Pager = ({isModalOpen, setIsModalOpen}) =>{
     return(
         <div className='flex justify-between mt-15 '>
         <div className=''>

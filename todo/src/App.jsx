@@ -13,19 +13,24 @@ function App() {
   {
     id: 'task-1',
     title: 'Go to run',
-    isChecked: false,
+    isDone: false,
   },
   {
     id: 'task-2',
     title: 'Go to gym',
-    isChecked: true,
+    isDone: true,
   },
 ]
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
+ const [isModalOpen, setIsModalOpen] = useState(false)
 
  const openModalForm = () =>{
   setIsModalOpen(!isModalOpen)
+ }
+
+ const toggleTaskComplete = (taskId, isDone) =>{
+  console.log();
+  
  }
 
   return (
