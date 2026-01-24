@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
+
 function App() {
 
 
@@ -13,8 +14,6 @@ function App() {
       <p className=' mt-4 font-medium'>Today is awesome day. The weather is awesome, you are awesome too!</p>
      </header>
   
-     <main>
-
       <div className='flex justify-between mt-15 '>
         <div className=''>
        <button className='ml-8 bg-gray-400 rounded-full p-2 px-6 font-medium text-white'>To Do</button>
@@ -35,7 +34,7 @@ function App() {
             <li className="flex items-center mb-2">
                  <button className='text-gray-400 font-bold'>⋮</button>
        <div className='ml-3 '>
-        <input className='accent-violet-600' type="checkbox" />
+        <input className='' type="checkbox" />
         <span className='ml-3 font-medium'>Write Essay</span>
           </div>
         </li>
@@ -43,7 +42,7 @@ function App() {
             <li className="flex items-center">
                  <button className='text-gray-400 font-bold'>⋮</button>
        <div className='ml-3'>
-        <input className='accent-violet-600' type="checkbox" />
+        <input className='' type="checkbox" />
         <span className='ml-3 font-medium'>Go to gym</span>
           </div>
         </li>
@@ -51,7 +50,7 @@ function App() {
       </ul>
       </div>
 
-     </main>
+
      <footer className='flex justify-between mt-auto'>
 
     <p className='ml-8 '>Made with ❤️ at nFactorial in 2022.</p>
