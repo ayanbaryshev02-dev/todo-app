@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import Header from './components/Header'
 
 
 function App() {
@@ -8,11 +9,8 @@ function App() {
   return (
     <>
     <div className='min-h-screen flex flex-col mt-10 ml-5 mr-12'>
-
-     <header className='p-8'>
-      <h1 className='text-[34px] font-bold'>Simple To Do List</h1>
-      <p className=' mt-4 font-medium'>Today is awesome day. The weather is awesome, you are awesome too!</p>
-     </header>
+    
+    <Header />
   
       <div className='flex justify-between mt-15 '>
         <div className=''>
