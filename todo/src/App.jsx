@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -48,13 +49,8 @@ function App() {
       </ul>
       </div>
 
-
-     <footer className='flex justify-between mt-auto'>
-
-    <p className='ml-8 '>Made with ❤️ at nFactorial in 2022.</p>
-    <p className='mr-8'><a href='#'/>Credits: icons from Icons8.</p>
-
-     </footer>
+      <Footer />
+   
       </div>
     </>
   )
