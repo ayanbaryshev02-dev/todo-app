@@ -1,9 +1,10 @@
-const ItemList = ({tasks, toggleTaskComplete}) =>{
+const ItemList = ({toggleTaskComplete, filteredTasks}) =>{
     return(
-
-        <div className='itemList mt-8 ml-4'>
+      <>
+    
+           <div className='itemList mt-8 ml-4'>
       <ul className=''>
-           {tasks.map((task)=>(
+           {filteredTasks.map((task)=>(
         <li key={task.id} id={task.id} className="flex items-center mb-2">
         <button className='text-gray-400 font-bold'>⋮</button>
        <div className='ml-3 '>
@@ -14,6 +15,9 @@ const ItemList = ({tasks, toggleTaskComplete}) =>{
            ))}
       </ul>
       </div>
+        
+         
+       </>
     )
 }
 export default ItemList

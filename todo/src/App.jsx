@@ -24,6 +24,7 @@ function App() {
 
 const [newTaskTitle, setNewTaskTitle] = useState('')
 const [isModalOpen, setIsModalOpen] = useState(false)
+const [activeTab, setActiveTab] = useState('ToDo')
 
  const openModalForm = () =>{
   setIsModalOpen(!isModalOpen)
@@ -42,6 +43,12 @@ const [isModalOpen, setIsModalOpen] = useState(false)
   }
 }
 
+const filteredTasks = tasks.filter(task=>{
+  if(activeTab === 'ToDo') return !task.isDone
+  if(activeTab === 'Done') return task.isDone
+  return true
+}
+)
  const toggleTaskComplete = (taskId, isDone) =>{
   setTasks(
     tasks.map((task)=>{
@@ -64,10 +71,14 @@ const [isModalOpen, setIsModalOpen] = useState(false)
     setIsModalOpen={setIsModalOpen}
     addNewTask={addNewTask}
     newTaskTitle={newTaskTitle}
-    setNewTaskTitle={setNewTaskTitle}/>
+    setNewTaskTitle={setNewTaskTitle}
+    activeTab={activeTab}
+    setActiveTab={setActiveTab}
+   />
     <SectionName />
-    <ItemList tasks={tasks}
+    <ItemList
     toggleTaskComplete={toggleTaskComplete}
+    filteredTasks={filteredTasks}
     />
     <Footer />
       </div>
