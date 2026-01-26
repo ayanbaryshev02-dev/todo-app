@@ -18,13 +18,15 @@ function App() {
   {
     id: 'task-2',
     title: 'Go to gym',
-    isDone: true,
+    isDone: false,
   },
 ])
+
 
 const [newTaskTitle, setNewTaskTitle] = useState('')
 const [isModalOpen, setIsModalOpen] = useState(false)
 const [activeTab, setActiveTab] = useState('ToDo')
+const [isMenuItemOpen, setIsMenuItemOpen] = useState(null)
 
  const openModalForm = () =>{
   setIsModalOpen(!isModalOpen)
@@ -49,6 +51,11 @@ const filteredTasks = tasks.filter(task=>{
   return true
 }
 )
+
+const openMenuId = (taskId) =>{
+  setIsMenuItemOpen(taskId)
+}
+
  const toggleTaskComplete = (taskId, isDone) =>{
   setTasks(
     tasks.map((task)=>{
@@ -79,6 +86,9 @@ const filteredTasks = tasks.filter(task=>{
     <ItemList
     toggleTaskComplete={toggleTaskComplete}
     filteredTasks={filteredTasks}
+    isMenuItemOpen={isMenuItemOpen}
+    setIsMenuItemOpen={setIsMenuItemOpen}
+    openMenuId={openMenuId}
     />
     <Footer />
       </div>
