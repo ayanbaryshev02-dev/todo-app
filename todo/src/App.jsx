@@ -111,7 +111,8 @@ const moveTaskToTrash =(taskId) =>{
     isMenuItemOpen={isMenuItemOpen}
     setIsMenuItemOpen={setIsMenuItemOpen}
     openMenuId={openMenuId}
-    moveTaskToTrash={moveTaskToTrash}/>
+    moveTaskToTrash={moveTaskToTrash}
+    activeTab={activeTab}/>
     <Footer />
       </div>
     </>
