@@ -104,7 +104,7 @@ const moveTaskToTrash =(taskId) =>{
     activeTab={activeTab}
     setActiveTab={setActiveTab}
    />
-    <SectionName />
+    <SectionName activeTab={activeTab}/>
     <ItemList
     toggleTaskComplete={toggleTaskComplete}
     filteredTasks={filteredTasks}
