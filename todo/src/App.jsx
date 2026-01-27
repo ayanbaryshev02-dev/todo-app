@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -24,13 +24,13 @@ function App() {
   },
 ])
 
-console.log(tasks);
 
 
 const [newTaskTitle, setNewTaskTitle] = useState('')
 const [isModalOpen, setIsModalOpen] = useState(false)
 const [activeTab, setActiveTab] = useState('ToDo')
 const [isMenuItemOpen, setIsMenuItemOpen] = useState(null)
+
 
  const openModalForm = () =>{
   setIsModalOpen(!isModalOpen)
@@ -59,7 +59,12 @@ const filteredTasks = tasks.filter(task=>{
 )
 
 const openMenuId = (taskId) =>{
+  if(taskId === isMenuItemOpen){
+  setIsMenuItemOpen(null)
+  }else{
   setIsMenuItemOpen(taskId)
+  }   
+
 }
 
 const moveTaskToTrash =(taskId) =>{
