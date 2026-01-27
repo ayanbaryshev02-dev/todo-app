@@ -14,13 +14,17 @@ function App() {
     id: 'task-1',
     title: 'Go to run',
     isDone: false,
+    isDeleted: false,
   },
   {
     id: 'task-2',
     title: 'Go to gym',
     isDone: false,
+    isDeleted: false,
   },
 ])
+
+console.log(tasks);
 
 
 const [newTaskTitle, setNewTaskTitle] = useState('')
@@ -39,6 +43,7 @@ const [isMenuItemOpen, setIsMenuItemOpen] = useState(null)
       id: crypto?.randomUUID() ?? Date.now().toString(), 
       title: newTaskTitle,
       isDone: false,
+      isDeleted: false,
     }
     setTasks([...tasks, newTask])
     setNewTaskTitle('')
@@ -46,14 +51,26 @@ const [isMenuItemOpen, setIsMenuItemOpen] = useState(null)
 }
 
 const filteredTasks = tasks.filter(task=>{
-  if(activeTab === 'ToDo') return !task.isDone
-  if(activeTab === 'Done') return task.isDone
+  if(activeTab === 'ToDo') return !task.isDone && !task.isDeleted
+  if(activeTab === 'Done') return task.isDone && !task.isDeleted
+  if(activeTab === 'Trash') return task.isDeleted 
   return true
 }
 )
 
 const openMenuId = (taskId) =>{
   setIsMenuItemOpen(taskId)
+}
+
+const moveTaskToTrash =(taskId) =>{
+  setTasks(
+    tasks.map((task)=>{
+      if(task.id === taskId){
+        return {...task, isDeleted: true}
+      }
+      return task
+    })
+  )
 }
 
  const toggleTaskComplete = (taskId, isDone) =>{
@@ -89,7 +106,7 @@ const openMenuId = (taskId) =>{
     isMenuItemOpen={isMenuItemOpen}
     setIsMenuItemOpen={setIsMenuItemOpen}
     openMenuId={openMenuId}
-    />
+    moveTaskToTrash={moveTaskToTrash}/>
     <Footer />
       </div>
     </>
