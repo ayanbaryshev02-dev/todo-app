@@ -9,8 +9,10 @@ const ItemList = ({toggleTaskComplete, filteredTasks, isMenuItemOpen, setIsMenuI
            {filteredTasks.map((task)=>(
         <li key={task.id} id={task.id} className="relative flex items-center mb-2">
         <button 
-        onClick={() => openMenuId(task.id)}
-       
+        onClick={(e) => {
+          e.stopPropagation();
+          openMenuId(task.id);}}
+        
         className='text-gray-400 font-bold'>⋮</button>
           {isMenuItemOpen === task.id && <TaskItemMenu 
         onClose={() => setIsMenuItemOpen(null)} 

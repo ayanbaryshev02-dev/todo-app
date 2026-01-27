@@ -1,17 +1,31 @@
 import { TRASH_SVG, MOVE_SVG } from './images';
 import { useEffect, useRef} from 'react'
 
-const TaskItemMenu = ({moveTaskToTrash, taskId, onClose, activeTab})=>{
+    const TaskItemMenu = ({moveTaskToTrash, taskId, onClose, activeTab})=>{
 
     const taskMenuRef = useRef(null)
 
     const handleClick = (event) => {
-      if(taskMenuRef.current && !taskMenuRef.current.contains(event.target))
+      
+      if (event.target.closest('button')) {
+       return
+      }
+      if(taskMenuRef.current && !taskMenuRef.current.contains(event.target)){
       onClose()
+      }
+ 
+
     }
 
     useEffect(()=>{
+      const timer = setTimeout(() => {
       document.addEventListener('mousedown', handleClick)
+      }, 0);
+
+      return() =>{
+        clearTimeout(timer)
+        document.removeEventListener('mousedown', handleClick);
+      }
     },[])
 
     if(activeTab === 'Trash'){
