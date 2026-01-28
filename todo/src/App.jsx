@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -9,7 +9,12 @@ import ItemList from './components/ItemList'
 
 function App() {
 
-  const [tasks, setTasks] = useState([
+  const [tasks, setTasks] = useState(()=>{
+    const savedTasks = localStorage.getItem('tasks')
+    if(savedTasks){
+      return JSON.parse(savedTasks)
+    }
+    return [
   {
     id: 'task-1',
     title: 'Go to run',
@@ -22,8 +27,8 @@ function App() {
     isDone: false,
     isDeleted: false,
   },
-])
-
+]
+  })
 
 
 const [newTaskTitle, setNewTaskTitle] = useState('')
@@ -107,6 +112,10 @@ const moveTaskToToDo = (taskId, isDeleted) =>{
   )
   
  }
+
+ useEffect(()=>{
+ localStorage.setItem('tasks', JSON.stringify(tasks))
+ }, [tasks])
 
   return (
     <>
