@@ -1,7 +1,7 @@
 import { TRASH_SVG, MOVE_SVG } from './images';
 import { useEffect, useRef} from 'react'
 
-    const TaskItemMenu = ({moveTaskToTrash, taskId, onClose, activeTab, deleteTask})=>{
+    const TaskItemMenu = ({moveTaskToTrash, taskId, onClose, activeTab, deleteTask, moveTaskToToDo})=>{
 
     const taskMenuRef = useRef(null)
 
@@ -45,7 +45,11 @@ import { useEffect, useRef} from 'react'
           </button>
         </li>
         <li>
-          <button className="flex items-center gap-3 px-2 py-1 w-full text-left hover:bg-gray-300 text-gray-900 text-sm">
+          <button 
+          className="flex items-center gap-3 px-2 py-1 w-full text-left hover:bg-gray-300 text-gray-900 text-sm"
+          onClick={()=>{moveTaskToToDo(taskId)
+            onClose()
+          }}>
             {MOVE_SVG}
             <span>Move Back To To Do</span>
           </button>

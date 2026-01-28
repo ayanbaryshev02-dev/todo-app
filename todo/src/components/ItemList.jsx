@@ -8,7 +8,8 @@ const ItemList = ({
   openMenuId, 
   moveTaskToTrash, 
   activeTab, 
-  deleteTask}) =>{
+  deleteTask,
+  moveTaskToToDo}) =>{
     return(
       <>
     
@@ -28,6 +29,7 @@ const ItemList = ({
         taskId={task.id}
         activeTab={activeTab}
         deleteTask={deleteTask}
+        moveTaskToToDo={moveTaskToToDo}
         />}
        <div className='ml-3 '>
         <input onChange={(event)=> toggleTaskComplete(task.id, event.target.checked)} type="checkbox" checked={task.isDone}/>
