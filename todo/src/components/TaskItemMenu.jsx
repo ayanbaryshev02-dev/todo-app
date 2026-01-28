@@ -1,7 +1,7 @@
 import { TRASH_SVG, MOVE_SVG } from './images';
 import { useEffect, useRef} from 'react'
 
-    const TaskItemMenu = ({moveTaskToTrash, taskId, onClose, activeTab})=>{
+    const TaskItemMenu = ({moveTaskToTrash, taskId, onClose, activeTab, deleteTask})=>{
 
     const taskMenuRef = useRef(null)
 
@@ -35,7 +35,11 @@ import { useEffect, useRef} from 'react'
     ref={taskMenuRef}>
       <ul>
         <li>
-          <button className="flex items-center gap-3 px-2 py-1 w-full text-left hover:bg-gray-300 text-gray-900 text-sm">
+          <button 
+          className="flex items-center gap-3 px-2 py-1 w-full text-left hover:bg-gray-300 text-gray-900 text-sm"
+          onClick={()=>{deleteTask(taskId);
+            onClose()
+          }}>
             {TRASH_SVG}
             <span>Delete Forever</span>
           </button>

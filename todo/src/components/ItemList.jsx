@@ -1,6 +1,14 @@
 import TaskItemMenu from "./TaskItemMenu"
 
-const ItemList = ({toggleTaskComplete, filteredTasks, isMenuItemOpen, setIsMenuItemOpen, openMenuId, moveTaskToTrash, activeTab}) =>{
+const ItemList = ({
+  toggleTaskComplete, 
+  filteredTasks, 
+  isMenuItemOpen, 
+  setIsMenuItemOpen, 
+  openMenuId, 
+  moveTaskToTrash, 
+  activeTab, 
+  deleteTask}) =>{
     return(
       <>
     
@@ -19,6 +27,7 @@ const ItemList = ({toggleTaskComplete, filteredTasks, isMenuItemOpen, setIsMenuI
         moveTaskToTrash={moveTaskToTrash}
         taskId={task.id}
         activeTab={activeTab}
+        deleteTask={deleteTask}
         />}
        <div className='ml-3 '>
         <input onChange={(event)=> toggleTaskComplete(task.id, event.target.checked)} type="checkbox" checked={task.isDone}/>

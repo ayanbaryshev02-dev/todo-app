@@ -78,6 +78,13 @@ const moveTaskToTrash =(taskId) =>{
   )
 }
 
+const deleteTask = (taskId) =>{
+  setTasks(
+   tasks.filter((task)=> task.id !== taskId)
+  )
+ 
+}
+
  const toggleTaskComplete = (taskId, isDone) =>{
   setTasks(
     tasks.map((task)=>{
@@ -112,7 +119,8 @@ const moveTaskToTrash =(taskId) =>{
     setIsMenuItemOpen={setIsMenuItemOpen}
     openMenuId={openMenuId}
     moveTaskToTrash={moveTaskToTrash}
-    activeTab={activeTab}/>
+    activeTab={activeTab}
+    deleteTask={deleteTask}/>
     <Footer />
       </div>
     </>
