@@ -12,12 +12,23 @@ const ItemList = ({
   activeTab, 
   deleteTask,
   moveTaskToToDo}) =>{
+
+    const itemsPerColumn = 9
+    const columns = []
+
+    for(let i = 0; i < filteredTasks.length; i += itemsPerColumn){
+      columns.push(filteredTasks.slice(i, i + itemsPerColumn))
+    }
+
     return(
       <>
     
-           <div className='itemList mt-8 ml-4'>
-      <ul className=''>
-           {filteredTasks.map((task)=>(
+      <div className='itemList mt-8 ml-4'>
+        <div className="grid grid-cols-3 gap-8">
+          {columns.map((column, columnIndex)=>(
+          
+      <ul key={columnIndex}>
+           {column.map((task)=>(
         <li key={task.id} id={task.id} className="relative flex items-center mb-2">
         <button 
         onClick={(e) => {
@@ -55,6 +66,8 @@ const ItemList = ({
         </li>
            ))}
       </ul>
+          ))}
+      </div>
       </div>
         
          
