@@ -1,4 +1,4 @@
-const AddTaskForm = ({addNewTask, newTaskTitle, setNewTaskTitle}) =>{
+const AddTaskForm = ({addNewTask, newTaskTitle, setNewTaskTitle, ref}) =>{
     return(
         <div className="flex absolute right-30 top-15 bg-gray-200 p-4 rounded shadow-lg ">
         <div className="flex">
