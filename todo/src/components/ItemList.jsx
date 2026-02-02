@@ -1,4 +1,6 @@
+import DONE_SVG from "./images/done.svg";
 import TaskItemMenu from "./TaskItemMenu"
+
 
 const ItemList = ({
   toggleTaskComplete, 
@@ -32,7 +34,22 @@ const ItemList = ({
         moveTaskToToDo={moveTaskToToDo}
         />}
        <div className='ml-3 '>
-        <input onChange={(event)=> toggleTaskComplete(task.id, event.target.checked)} type="checkbox" checked={task.isDone}/>
+       <div className="relative inline-flex items-center top-0.5">
+        <input 
+          type="checkbox" 
+          className="appearance-none w-4 h-4 bg-gray border-2 border-[#AEAEAE] rounded checked:bg-[#712FFF] checked:border-none cursor-pointer"
+          onChange={(event)=> toggleTaskComplete(task.id, event.target.checked)} 
+          checked={task.isDone}
+          id={`checkbox-${task.id}`}
+        />
+        {task.isDone && (
+          <img 
+            src={DONE_SVG} 
+            alt="done" 
+            className="absolute w-2.5 h-2.5 pointer-events-none left-1"
+          />
+        )}
+      </div>
         <span className={`ml-3 font-medium ${task.isDone ? 'line-through text-gray-400': ''}`}>{task.title}</span>
           </div>
         </li>
