@@ -35,6 +35,7 @@ const [newTaskTitle, setNewTaskTitle] = useState('')
 const [isModalOpen, setIsModalOpen] = useState(false)
 const [activeTab, setActiveTab] = useState('ToDo')
 const [isMenuItemOpen, setIsMenuItemOpen] = useState(null)
+const [selectTask, setSelectTask] = useState(null)
 
 
  const openModalForm = () =>{
@@ -64,6 +65,7 @@ const filteredTasks = tasks.filter(task=>{
 )
 
 const openMenuId = (taskId) =>{
+  setSelectTask(taskId)
   if(taskId === isMenuItemOpen){
   setIsMenuItemOpen(null)
   }else{
@@ -141,7 +143,9 @@ const moveTaskToToDo = (taskId, isDeleted) =>{
     moveTaskToTrash={moveTaskToTrash}
     activeTab={activeTab}
     deleteTask={deleteTask}
-    moveTaskToToDo={moveTaskToToDo}/>
+    moveTaskToToDo={moveTaskToToDo}
+    selectTask={selectTask}
+    setSelectTask={setSelectTask}/>
     <Footer />
       </div>
     </>

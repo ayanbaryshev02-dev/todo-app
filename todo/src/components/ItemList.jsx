@@ -11,7 +11,9 @@ const ItemList = ({
   moveTaskToTrash, 
   activeTab, 
   deleteTask,
-  moveTaskToToDo}) =>{
+  moveTaskToToDo,
+  selectTask,
+  setSelectTask}) =>{
 
     const itemsPerColumn = 9
     const columns = []
@@ -22,20 +24,27 @@ const ItemList = ({
 
     return(
       <>
-    
-      <div className='itemList mt-8 ml-4'>
+      <div onClick={()=> setSelectTask(null)}> 
+      <div className='itemList mt-8 ml-2'>
         <div className="grid grid-cols-3 gap-8">
           {columns.map((column, columnIndex)=>(
           
       <ul key={columnIndex}>
            {column.map((task)=>(
-        <li key={task.id} id={task.id} className="relative flex items-center mb-2">
+        <li key={task.id} 
+        id={task.id} 
+        className={`relative flex items-center mb-2 p-2 ${selectTask === task.id ? 'bg-gray-200' : ''}`}
+        onClick={(e)=> {
+          e.stopPropagation()
+          setSelectTask(task.id)
+        }}
+        >
         <button 
         onClick={(e) => {
           e.stopPropagation();
           openMenuId(task.id);}}
         
-        className='text-gray-400 font-bold'>⋮</button>
+        className='text-gray-400 font-bold cursor-pointer'>⋮</button>
           {isMenuItemOpen === task.id && <TaskItemMenu 
         onClose={() => setIsMenuItemOpen(null)} 
         moveTaskToTrash={moveTaskToTrash}
@@ -69,8 +78,7 @@ const ItemList = ({
           ))}
       </div>
       </div>
-        
-         
+      </div>
        </>
     )
 }
