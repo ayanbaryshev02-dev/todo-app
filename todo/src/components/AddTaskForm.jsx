@@ -1,4 +1,15 @@
+import { useEffect, useRef } from "react"
+
 const AddTaskForm = ({addNewTask, newTaskTitle, setNewTaskTitle}) =>{
+
+    const inputRef = useRef()
+
+    useEffect(()=>{
+        if(inputRef.current){
+            inputRef.current.focus()
+        }
+    }, [])
+
     return(
         <div className="flex absolute right-30 top-15 bg-[#E4E6E7] p-4 rounded shadow-lg ">
         <div className="flex">
@@ -8,8 +19,20 @@ const AddTaskForm = ({addNewTask, newTaskTitle, setNewTaskTitle}) =>{
             className="bg-white h-30 w-60 rounded pl-3 resize-none pb-20" 
             placeholder="Your text" type="text" 
             value={newTaskTitle}
+            ref={inputRef}
             onInput={(event) => setNewTaskTitle(event.target.value)}/>
-            <button onClick={addNewTask} type="submit" className="bg-[#081E34] text-white rounded-3xl h-10 w-20 flex-end mt-3">Add</button>
+            <button 
+            onClick={(e)=>{
+                addNewTask(e);
+                if(inputRef.current){
+                    inputRef.current.focus()
+                }
+            }}
+             type="submit" 
+             className="bg-[#081E34] text-white rounded-3xl h-10 w-20 flex-end mt-3"
+             >
+                Add
+                </button>
             </form>
         </div>
         </div>
