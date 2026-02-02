@@ -83,13 +83,14 @@ const moveTaskToTrash =(taskId) =>{
       return task
     })
   )
+  setSelectTask(null)
 }
 
 const deleteTask = (taskId) =>{
   setTasks(
    tasks.filter((task)=> task.id !== taskId)
   )
- 
+ setSelectTask(null)
 }
 
 const moveTaskToToDo = (taskId, isDeleted) =>{
@@ -101,6 +102,8 @@ const moveTaskToToDo = (taskId, isDeleted) =>{
         return task
       })
     )
+setSelectTask(null)
+
 }
 
  const toggleTaskComplete = (taskId, isDone) =>{
@@ -112,7 +115,7 @@ const moveTaskToToDo = (taskId, isDeleted) =>{
       return task
     })
   )
-  
+  setSelectTask(null)
  }
 
  useEffect(()=>{
@@ -132,6 +135,7 @@ const moveTaskToToDo = (taskId, isDeleted) =>{
     setNewTaskTitle={setNewTaskTitle}
     activeTab={activeTab}
     setActiveTab={setActiveTab}
+    setSelectTask={setSelectTask}
    />
     <SectionName activeTab={activeTab}/>
     <ItemList

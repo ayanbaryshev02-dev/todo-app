@@ -24,8 +24,8 @@ const ItemList = ({
 
     return(
       <>
-      <div onClick={()=> setSelectTask(null)}> 
-      <div className='itemList mt-8 ml-2'>
+  
+      <div className='itemList mt-8 ml-2' onClick={()=> setSelectTask(null)}>
         <div className="grid grid-cols-3 gap-8">
           {columns.map((column, columnIndex)=>(
           
@@ -76,7 +76,6 @@ const ItemList = ({
            ))}
       </ul>
           ))}
-      </div>
       </div>
       </div>
        </>
